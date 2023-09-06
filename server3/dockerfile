@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+
+FROM node:18-bookworm
+
+#Specify whether using production or development
+ENV NODE_ENV=production
+
+#Default location for docker path
+WORKDIR /mockproject
+
+#Choose where to get the source folders from, and where to copy to. Format of [<src>, <any other src>, <destination>]
+
+COPY package*.json ./
+
+#Run sequence
+RUN npm install
+
+#Copy all files currently in the directory into the new image
+
+COPY . .
+
+EXPOSE 3434
+
+#Tells docker what to run when the image is made
+CMD ["node", "server3.js"]

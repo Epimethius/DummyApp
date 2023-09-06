@@ -1,0 +1,17 @@
+{
+  "name": "dummyapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "frontend.js",
+  "scripts": {
+    "start-servers": "node server1.js && node server2.js && node server3.js",
+    "start-front": "node frontend.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
