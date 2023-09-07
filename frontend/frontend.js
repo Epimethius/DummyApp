@@ -11,7 +11,7 @@ setInterval(async () => {
     const num = Math.floor(Math.random() * 3);
     console.log('making a call to: ' + servers[num]);
     try{
-      const result = await axios.get(servers[num]);
+      const result = await axios.get(servers[0]);
     }
     catch (error){
       console.log('failed with error: ', error);

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: kubernetes-server1-imseriousthistime
+  name: kubernetes-server1-imseriousthistime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-server1-imseriousthistime
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: kubernetes-server1-imseriousthistime
+    spec:
+      containers:
+      - image: mk/server1
+        name: server1
+        resources: {}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+status: {}
