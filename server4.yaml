@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dummyapp2
+spec:
+  selector:
+    app: dummyapp2
+  ports:
+    - port: 5000
+      targetPort: 5000
+  type: LoadBalancer
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dummyapp2
+  name: dummyapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dummyapp2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dummyapp2
+    spec:
+      containers:
+      - image: mk/server4
+        name: server4
+        resources: {}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+status: {}

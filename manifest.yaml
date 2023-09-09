@@ -1,21 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dummyapp
+spec:
+  selector:
+    app: dummyapp
+  ports:
+    - name: server1
+      port: 3000
+      targetPort: 3000
+    - name: server2
+      port: 3030
+      targetPort: 3030
+    - name: server3
+      port: 3434
+      targetPort: 3434
+  type: LoadBalancer
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: kubernetes-server1-imseriousthistime
-  name: kubernetes-server1-imseriousthistime
+    app: dummyapp
+  name: dummyapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kubernetes-server1-imseriousthistime
+      app: dummyapp
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: kubernetes-server1-imseriousthistime
+        app: dummyapp
     spec:
       containers:
       - image: mk/server1
@@ -24,4 +44,16 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
+      - image: mk/server2
+        name: server2
+        resources: {}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3030
+      - image: mk/server3
+        name: server3
+        resources: {}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3434
 status: {}
